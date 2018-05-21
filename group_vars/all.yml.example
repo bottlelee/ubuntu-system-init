@@ -1,5 +1,5 @@
 ansible_ssh_pass: sudo_pass
-hostname: lacrimosa
+my_hostname: lacrimosa
 
 # sources mirror
 apt_mirror: mirrors.aliyun.com
