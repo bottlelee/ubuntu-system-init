@@ -1,0 +1,15 @@
+ansible_ssh_pass: sudo_pass
+hostname: lacrimosa
+
+# sources mirror
+apt_mirror: mirrors.aliyun.com
+
+# tools
+basic_tools:
+  - htop
+  - di
+
+# DNS servers
+dns_servers:
+  - 223.5.5.5
+  - 1.1.1.1

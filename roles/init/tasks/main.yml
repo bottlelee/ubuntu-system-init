@@ -1,0 +1,3 @@
+- include_tasks: hostname.yml
+- include_tasks: resolv.yml
+- include_tasks: tools.yml

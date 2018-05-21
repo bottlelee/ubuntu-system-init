@@ -1,0 +1,13 @@
+retry
+*.deb
+*.rpm
+*.tar.gz
+*.zip
+.~lock.*
+temp.yml
+downloaded_files
+.vagrant
+*.log
+.fact_caching
+host_vars
+group_vars/all.yml
