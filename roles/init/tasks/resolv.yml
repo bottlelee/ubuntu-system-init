@@ -1,12 +1,29 @@
-- name: Setup DNS servers
-  lineinfile:
-    path: "/etc/resolvconf/resolv.conf.d/head"
-    line: "nameserver {{ item }}"
-  with_items: "{{ dns_servers }}"
-  register: resolvconf
+- block:
+    - name: Setup DNS servers | xenial
+      lineinfile:
+        path: "/etc/resolvconf/resolv.conf.d/head"
+        line: "nameserver {{ item }}"
+      with_items: "{{ dns_servers }}"
+      register: resolvconf
+    - name: Restarting resolvconf service
+      service:
+        name: resolvconf
+        state: restarted
+      when: resolvconf is changed
+  when: ansible_distribution_release == 'xenial'
 
-- name: Restarting resolvconf service
-  service:
-    name: resolvconf
-    state: restarted
-  when: resolvconf is changed
+- block:
+    - name: Setup DNS servers | bionic
+      ini_file:
+        path: /etc/systemd/resolved.conf
+        section: Resolve
+        option: DNS
+        value: "{{ item | join(' ') }}"
+      with_items: "{{ dns_servers }}"
+      register: systemd-resolved
+    - name: Restarting systemd-resolved service
+      service:
+        name: systemd-resolved
+        state: restarted
+      when: systemd-resolved is changed
+  when: ansible_distribution_release == 'bionic'
