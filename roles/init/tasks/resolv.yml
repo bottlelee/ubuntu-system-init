@@ -18,8 +18,7 @@
         path: /etc/systemd/resolved.conf
         section: Resolve
         option: DNS
-        value: "{{ item | join(' ') }}"
-      with_items: "{{ dns_servers }}"
+        value: "{{ dns_servers | join(' ') }}"
       register: resolved
     - name: Restarting systemd-resolved service
       service:
