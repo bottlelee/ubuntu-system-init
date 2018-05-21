@@ -20,10 +20,10 @@
         option: DNS
         value: "{{ item | join(' ') }}"
       with_items: "{{ dns_servers }}"
-      register: systemd-resolved
+      register: resolved
     - name: Restarting systemd-resolved service
       service:
         name: systemd-resolved
         state: restarted
-      when: systemd-resolved is changed
+      when: resolved is changed
   when: ansible_distribution_release == 'bionic'

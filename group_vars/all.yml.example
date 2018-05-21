@@ -1,4 +1,4 @@
-ansible_ssh_pass: sudo_pass
+ansible_become_pass: sudo_pass
 my_hostname: lacrimosa
 
 # sources mirror
@@ -8,6 +8,8 @@ apt_mirror: mirrors.aliyun.com
 basic_tools:
   - htop
   - di
+  - curl
+  - axel
 
 # DNS servers
 dns_servers:
