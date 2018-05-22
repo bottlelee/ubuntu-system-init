@@ -1,11 +1,15 @@
 - block:
-    - name: Checking atom command
+    - name: Checking command '/usr/bin/atom'
       stat:
         path: /usr/bin/atom
       changed_when: false
       register: st
       failed_when: st.stat.exists == False
   rescue:
+    - name: Installing nodejs
+      become: yes
+      apt:
+        name: nodejs
     - name: Downloading atom
       get_url:
         url: https://atom.io/download/deb
@@ -14,13 +18,9 @@
       become: yes
       apt:
         deb: /tmp/atom.deb
-    - name: Installing nodejs
-      become: yes
-      apt:
-        name: nodejs
 
-- nane: Installing atom plugins
-  command: "apm install {{ item }}"
+- name: Installing atom plugins
+  command: "/usr/bin/apm install {{ item }}"
   changed_when: false
   with_items:
     - autocomplete-ansible

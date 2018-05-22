@@ -1,0 +1,23 @@
+- name: Installing packages
+  become: yes
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - compiz-gnome
+    - compiz
+    - compiz-core
+    - compiz-plugins
+    - compiz-plugins-default
+    - compiz-plugins-extra
+    - compizconfig-settings-manager
+    - adwaita-qt
+
+- name: Creating auto start
+  copy:
+    src: compiz.desktop
+    dest: ~/.config/autostart/compiz.desktop
+
+- name: Creating compiz config profile
+  copy:
+    src: ccsm.config.profile
+    dest: ~/.config/compiz-1/compizconfig/Default.ini

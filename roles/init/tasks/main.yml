@@ -1,12 +1,7 @@
 - include_tasks: hostname.yml
+
 - include_tasks: resolv.yml
+
 - include_tasks: tools.yml
 
-- name: Add aliase
-  become: no
-  lineinfile:
-    path: ~/.bash_aliases
-    line: "alias {{ item }}"
-  with_items:
-    - pansible='ansible-playbook'
-    - cdocker='docker-compose'
+- include_tasks: config.yml

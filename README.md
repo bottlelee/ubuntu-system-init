@@ -1,5 +1,5 @@
 # ubuntu-system-init
-Initial an ubuntu system after installed
+Initial an [Xubuntu](https://xubuntu.org) system after installed
 
 Run
 1. `wget -O- https://raw.githubusercontent.com/bottlelee/ubuntu-system-init/master/init_ansible.sh | sh -`
