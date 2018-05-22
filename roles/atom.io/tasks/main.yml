@@ -1,0 +1,32 @@
+- block:
+    - name: Checking atom command
+      stat:
+        path: /usr/bin/atom
+      changed_when: false
+      register: st
+      failed_when: st.stat.exists == False
+  rescue:
+    - name: Downloading atom
+      get_url:
+        url: https://atom.io/download/deb
+        dest: /tmp/atom.deb
+    - name: Installing atom
+      become: yes
+      apt:
+        deb: /tmp/atom.deb
+    - name: Installing nodejs
+      become: yes
+      apt:
+        name: nodejs
+
+- nane: Installing atom plugins
+  command: "apm install {{ item }}"
+  changed_when: false
+  with_items:
+    - autocomplete-ansible
+    - ansible-vault
+    - git-plus
+    - platformio-ide-terminal
+    - language-docker
+    - language-ansible
+    - atom-jinja2
