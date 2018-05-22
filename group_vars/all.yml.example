@@ -1,4 +1,4 @@
-ansible_become_pass: sudo_pass
+ansible_become_pass: <your_sudo_pass>
 my_hostname: lacrimosa
 
 # sources mirror
@@ -10,6 +10,13 @@ basic_tools:
   - di
   - curl
   - axel
+  - qbittorent
+
+# remove unwanted softwares
+remove_softwares:
+  - pidgin
+  - thunderbird
+  - transmission
 
 # DNS servers
 dns_servers:

@@ -1,0 +1,8 @@
+- block:
+    - name: Checking command '/usr/bin/compiz'
+      stat:
+        path: /usr/bin/compiz
+      register: st
+      failed_when: st.stat.exists == False
+  rescue:
+    - include_tasks: install.yml
