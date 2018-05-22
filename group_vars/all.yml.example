@@ -4,6 +4,9 @@ my_hostname: lacrimosa
 # sources mirror
 apt_mirror: mirrors.aliyun.com
 
+# vagrant
+vagrant_version: 2.1.1
+
 # tools
 basic_tools:
   - htop
@@ -18,6 +21,8 @@ remove_softwares:
   - pidgin
   - thunderbird
   - transmission
+
+bash_aliases: ""
 
 # DNS servers
 dns_servers:
