@@ -16,3 +16,16 @@
         name: "{{ ansible_user_id }}"
         group: docker
         append: yes
+    - name: Add kernel swap limit capabilities
+      lineinfile:
+        path: /etc/default/grub
+        regexp: "^GRUB_CMDLINE_LINUX="
+        line: 'GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"'
+    - name: Updating grub
+      command: update-grub
+
+- name: Updating docker daemon config
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+  notify: Restart docker service
