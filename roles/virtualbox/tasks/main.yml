@@ -1,0 +1,13 @@
+- block:
+    - name: Checking virtualbox service
+      service:
+        name: virtualbox
+        state: started
+      changed_when: false
+  rescue:
+    - name: Installing virtualbox
+      apt:
+        name: "{{ item }}"
+      with_items:
+        - virtualbox
+        - virtualbox-guest-additions-iso

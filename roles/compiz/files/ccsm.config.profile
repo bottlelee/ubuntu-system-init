@@ -1,5 +1,5 @@
 [core]
-s0_active_plugins = core;composite;crashhandler;opengl;decor;gnomecompat;imgjpeg;imgpng;imgsvg;move;obs;put;regex;resize;showdesktop;text;wobbly;animation;cube;dbus;ring;rotate;
+s0_active_plugins = core;composite;crashhandler;opengl;decor;gnomecompat;imgjpeg;imgpng;imgsvg;move;obs;place;put;regex;resize;showdesktop;text;wobbly;animation;cube;dbus;ring;rotate;
 s0_hsize = 4
 
 [ring]
