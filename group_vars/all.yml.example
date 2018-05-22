@@ -15,3 +15,54 @@ basic_tools:
 dns_servers:
   - 223.5.5.5
   - 1.1.1.1
+
+# sysctl rules
+sysctl_rules:
+  - key: kernel.core_uses_pid
+    value: 1
+  - key: kernel.ctrl-alt-del
+    value: 0
+  - key: kernel.kptr_restrict
+    value: 1
+  - key: kernel.sysrq
+    value: 0
+  - key: net.ipv4.conf.all.accept_redirects
+    value: 0
+  - key: net.ipv4.conf.all.accept_source_route
+    value: 0
+  - key: net.ipv4.conf.all.bootp_relay
+    value: 0
+  - key: net.ipv4.conf.all.forwarding
+    value: 0
+  - key: net.ipv4.conf.all.log_martians
+    value: 1
+  - key: net.ipv4.conf.all.mc_forwarding
+    value: 0
+  - key: net.ipv4.conf.all.proxy_arp
+    value: 0
+  - key: net.ipv4.conf.all.rp_filter
+    value: 1
+  - key: net.ipv4.conf.all.send_redirects
+    value: 0
+  - key: net.ipv4.conf.default.accept_redirects
+    value: 0
+  - key: net.ipv4.conf.default.accept_source_route
+    value: 0
+  - key: net.ipv4.conf.default.log_martians
+    value: 1
+  - key: net.ipv4.icmp_echo_ignore_broadcasts
+    value: 1
+  - key: net.ipv4.icmp_ignore_bogus_error_responses
+    value: 1
+  - key: net.ipv4.tcp_syncookies
+    value: 1
+  - key: net.ipv4.tcp_timestamps
+    value: 0
+  - key: net.ipv6.conf.all.accept_redirects
+    value: 0
+  - key: net.ipv6.conf.all.accept_source_route
+    value: 0
+  - key: net.ipv6.conf.default.accept_redirects
+    value: 0
+  - key: net.ipv6.conf.default.accept_source_route
+    value: 0
