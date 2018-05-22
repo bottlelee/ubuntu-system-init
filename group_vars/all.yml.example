@@ -10,7 +10,8 @@ basic_tools:
   - di
   - curl
   - axel
-  - qbittorent
+  - qbittorrent
+  - oxygen-cursor-theme
 
 # remove unwanted softwares
 remove_softwares:

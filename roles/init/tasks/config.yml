@@ -1,0 +1,12 @@
+- name: Updating ~/.config/xfce4/terminal/terminalrc
+  become: no
+  copy:
+    src: terminalrc
+    dest: ~/.config/xfce4/terminal/terminalrc
+
+- name: Add aliase
+  become: no
+  lineinfile:
+    path: ~/.bash_aliases
+    line: "alias {{ item }}"
+  with_items: "{{ bash_aliases }}"
