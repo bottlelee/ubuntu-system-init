@@ -1,5 +1,5 @@
 ansible_become_pass: <your_sudo_pass>
-my_hostname: lacrimosa
+my_hostname: <your_hostname>
 
 # sources mirror
 apt_mirror: mirrors.aliyun.com
@@ -18,6 +18,11 @@ remove_softwares:
   - pidgin
   - thunderbird
   - transmission
+
+# Bash aliases
+bash_aliases:
+  - pansible='ansible-playbook'
+  - cdocker='docker-compose'
 
 # DNS servers
 dns_servers:
