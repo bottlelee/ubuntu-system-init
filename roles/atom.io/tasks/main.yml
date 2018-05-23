@@ -10,14 +10,14 @@
       become: yes
       apt:
         name: nodejs
-    - name: Downloading atom
-      get_url:
-        url: https://atom.io/download/deb
-        dest: /tmp/atom.deb
     - name: Installing atom
       become: yes
       apt:
-        deb: /tmp/atom.deb
+        deb: https://atom.io/download/deb
+      register: install
+      until: install is succeeded
+      retries: 99
+      delay: 3
 
 - name: Installing atom plugins
   command: "/usr/bin/apm install {{ item }}"
@@ -30,3 +30,7 @@
     - language-docker
     - language-ansible
     - atom-jinja2
+  register: plugins
+  until: plugins is succeeded
+  retries: 99
+  delay: 3

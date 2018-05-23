@@ -1,0 +1,13 @@
+- block:
+    - name: Checking vagrant version
+      shell: "/usr/bin/vagrant --version | awk '{ print $2 }'"
+      register: versionCheck
+      failed_when: versionCheck.stdout is version(vagrant_version, operator='lt', strict=True)
+  rescue:
+    - name: Installing vagrant
+      apt:
+        deb: "https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.deb"
+      register: install
+      until: install is succeeded
+      retries: 99
+      delay: 3
