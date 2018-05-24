@@ -3,6 +3,10 @@ my_hostname: lacrimosa
 
 # sources mirror
 apt_mirror: mirrors.aliyun.com
+apt_fast_mirrors:
+  - "http://mirrors.aliyun.com/ubuntu"
+  - "http://mirrors.163.com/ubuntu"
+  - "http://cn.archive.ubuntu.com"
 
 # vagrant
 vagrant_version: 2.1.1
@@ -22,7 +26,9 @@ remove_softwares:
   - thunderbird
   - transmission
 
-bash_aliases: ""
+bash_aliases:
+  - pansible='ansible-playbook'
+  - cdocker='docker-compose'
 
 # DNS servers
 dns_servers:

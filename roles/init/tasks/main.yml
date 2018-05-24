@@ -5,3 +5,5 @@
 - include_tasks: tools.yml
 
 - include_tasks: config.yml
+
+- include_tasks: apt_fast.yml

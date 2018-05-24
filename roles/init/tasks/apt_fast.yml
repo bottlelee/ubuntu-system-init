@@ -1,0 +1,27 @@
+- block:
+    - name: Checking command 'apt-fast'
+      stat:
+        path: /usr/sbin/apt-fast
+      register: st
+      failed_when: st.stat.exists == False
+  rescue:
+    - name: Importing PPA repo
+      apt_repository:
+        repo: ppa:apt-fast/stable
+    - name: Installing apt-fast
+      apt:
+        name: apt-fast
+    - name: Installing auto completion
+      get_url:
+        url: https://raw.githubusercontent.com/ilikenwf/apt-fast/master/completions/bash/apt-fast
+        dest: /etc/bash_completion.d/apt-fast
+
+- name: Config /etc/apt-fast.conf
+  lineinfile:
+    path: /etc/apt-fast.conf
+    line: "{{ item }}"
+    regexp: "^{{ item | truncate(5, True) }}"
+  with_items:
+    - _APTMGR=apt-get
+    - DOWNLOADBEFORE=true
+    - MIRRORS=("{{ apt_fast_mirrors | join(', ') }}")
