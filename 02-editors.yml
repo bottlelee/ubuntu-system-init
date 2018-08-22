@@ -1,0 +1,10 @@
+- hosts: localhost
+  become: true
+  tasks:
+    - name: Installing atom editor through snap
+      command: "snap install {{ item }} --classic"
+      changed_when: false
+      with_items:
+        - atom
+        - vscode
+        - pycharm-community
