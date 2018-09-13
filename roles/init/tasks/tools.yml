@@ -10,3 +10,7 @@
     state: absent
     purge: yes
   with_items: "{{ remove_softwares }}"
+
+- name: Installing drivers
+  command: ubuntu-drivers autoinstall
+  changed_when: false
