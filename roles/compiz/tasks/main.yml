@@ -8,5 +8,3 @@
       failed_when: st.stat.exists == False
   rescue:
     - include_tasks: install.yml
-
-- include_tasks: install.yml
