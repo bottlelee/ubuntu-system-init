@@ -7,10 +7,9 @@
   rescue:
     - name: Installing docker.io and docker-compose
       apt:
-        name: "{{ item }}"
-      with_items:
-        - docker.io
-        - docker-compose
+        name:
+          - docker.io
+          - docker-compose
     - name: Add my account to group 'docker'
       user:
         name: "{{ ansible_user_id }}"

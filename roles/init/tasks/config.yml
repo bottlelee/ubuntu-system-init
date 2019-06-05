@@ -13,8 +13,8 @@
     create: yes
   with_items: "{{ bash_aliases }}"
 
-- name: Set /etc/sysctl.conf
-  sysctl:
-    name: "{{ item.key }}"
-    value: "{{ item.value }}"
-  with_items: "{{ sysctl_rules }}"
+# - name: Set /etc/sysctl.conf
+#   sysctl:
+#     name: "{{ item.key }}"
+#     value: "{{ item.value }}"
+#   with_items: "{{ sysctl_rules }}"

@@ -7,7 +7,6 @@
   rescue:
     - name: Installing virtualbox
       apt:
-        name: "{{ item }}"
-      with_items:
-        - virtualbox
-        - virtualbox-guest-additions-iso
+        name:
+          - virtualbox
+          - virtualbox-guest-additions-iso

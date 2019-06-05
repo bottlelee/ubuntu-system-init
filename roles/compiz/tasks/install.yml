@@ -1,16 +1,23 @@
 - name: Installing packages
   become: yes
   apt:
-    name: "{{ item }}"
+    name:
+      - compiz-gnome
+      - compiz
+      - compiz-core
+      - compiz-plugins
+      - compiz-plugins-default
+      - compiz-plugins-extra
+      - compizconfig-settings-manager
+      - adwaita-qt
+
+- name: Creating dirs
+  file:
+    path: "~/.config/{{ item }}"
+    state: directory
   with_items:
-    - compiz-gnome
-    - compiz
-    - compiz-core
-    - compiz-plugins
-    - compiz-plugins-default
-    - compiz-plugins-extra
-    - compizconfig-settings-manager
-    - adwaita-qt
+    - autostart
+    - compiz-1/compizconfig
 
 - name: Creating auto start
   copy:

@@ -1,12 +1,14 @@
 - name: Installing basic tools
   apt:
-    name: "{{ item }}"
+    name:
+      - "{{ item }}"
     state: present
   with_items: "{{ basic_tools }}"
 
 - name: Removing un-wanted softwares
   apt:
-    name: "{{ item }}"
+    name:
+      - "{{ item }}"
     state: absent
     purge: yes
   with_items: "{{ remove_softwares }}"
